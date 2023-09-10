@@ -2,6 +2,51 @@
 <html>
 <head>
     <title>Car Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        select, input[type="submit"], button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        select {
+            width: 200px;
+        }
+
+        input[type="submit"], button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const table = document.querySelector('table');
@@ -63,14 +108,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <th>Color</th>
     </tr>
     <?php foreach ($data as $row): ?>
-        <tr>
-            <td><?php echo $row['car_name']; ?></td>
-            <td><?php echo $row['price']; ?></td>
-            <td><?php echo $row['discount']; ?></td>
-            <td><?php echo $row['hand']; ?></td>
-            <td><?php echo $row['availability']; ?></td>
-            <td><?php echo $row['color']; ?></td>
-        </tr>
+            <tr>
+                <td><?php echo $row['car_name']; ?></td>
+                <td><?php echo $row['price']; ?></td>
+                <td><?php echo $row['discount']; ?></td>
+                <td><?php echo $row['hand']; ?></td>
+                <td><?php echo $row['availability']; ?></td>
+                <td><?php echo $row['color']; ?></td>
+            </tr>
     <?php endforeach; ?>
 </table>
 
