@@ -2,6 +2,9 @@
 <html>
 <head>
     <title>Car Table</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <style>
         table {
             border-collapse: collapse;
@@ -119,5 +122,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endforeach; ?>
 </table>
 
+<h2>Here's another go using DataTables</h2>
+<h4>Click on any column name to sort the column</h4>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Car Name</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Hand</th>
+                <th>Availability</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Car Name</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Hand</th>
+                <th>Availability</th>
+                <th>Color</th>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+    const data = [
+        {"car_name": "Tesla Model S", "price": 79999, "discount": 5000, "hand": 4, "availability": "In Stock", "color": "Red"},
+        {"car_name": "Toyota Prius", "price": 24999, "discount": 2000, "hand": 2, "availability": "Out of Stock", "color": "Blue"},
+        {"car_name": "Ford Mustang", "price": 55999, "discount": 3000, "hand": 3, "availability": "In Stock", "color": "Black"},
+        {"car_name": "Audi A4", "price": 39999, "discount": 4500, "hand": 1, "availability": "In Stock", "color": "White"},
+        {"car_name": "BMW 3 Series", "price": 41999, "discount": 4000, "hand": 1, "availability": "Out of Stock", "color": "Silver"}
+    ];
+
+    $(document).ready(function () {
+        $('#example').DataTable({
+            data: data,
+            columns: [
+                { data: 'car_name' },
+                { 
+                    data: 'price',
+                    render: function (data, type, row) {
+                        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data);
+                    }
+                },
+                { 
+                    data: 'discount',
+                    render: function (data, type, row) {
+                        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data);
+                    }
+                },
+                { data: 'hand' },
+                { data: 'availability' },
+                { data: 'color' }
+            ]
+        });
+    });
+
+
+    </script>
 </body>
 </html>
